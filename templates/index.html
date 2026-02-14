@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Breast Cancer Prediction</title>
+</head>
+<body>
+  <h2>Breast Cancer Prediction (UCI Dataset)</h2>
+
+  {% if error %}
+    <p style="color:red;"><b>Error:</b> {{ error }}</p>
+  {% endif %}
+
+  {% if prediction is not none %}
+    <h3>Prediction Result:</h3>
+    {% if prediction == 0 %}
+      <p style="color:green;"><b>Benign (No Cancer)</b></p>
+    {% else %}
+      <p style="color:red;"><b>Malignant (Cancer Detected)</b></p>
+    {% endif %}
+  {% endif %}
+
+  <form action="/predict" method="post">
+    <label>Clump Thickness:</label>
+    <input type="number" name="Clump_thickness" min="1" max="10" required><br><br>
+
+    <label>Uniformity of Cell Size:</label>
+    <input type="number" name="Uniformity_of_cell_size" min="1" max="10" required><br><br>
+
+    <label>Uniformity of Cell Shape:</label>
+    <input type="number" name="Uniformity_of_cell_shape" min="1" max="10" required><br><br>
+
+    <label>Marginal Adhesion:</label>
+    <input type="number" name="Marginal_adhesion" min="1" max="10" required><br><br>
+
+    <label>Single Epithelial Cell Size:</label>
+    <input type="number" name="Single_epithelial_cell_size" min="1" max="10" required><br><br>
+
+    <label>Bare Nuclei:</label>
+    <input type="number" name="Bare_nuclei" min="1" max="10" required><br><br>
+
+    <label>Bland Chromatin:</label>
+    <input type="number" name="Bland_chromatin" min="1" max="10" required><br><br>
+
+    <label>Normal Nucleoli:</label>
+    <input type="number" name="Normal_nucleoli" min="1" max="10" required><br><br>
+
+    <label>Mitoses:</label>
+    <input type="number" name="Mitoses" min="1" max="10" required><br><br>
+
+    <button type="submit">Predict</button>
+  </form>
+</body>
+</html>
